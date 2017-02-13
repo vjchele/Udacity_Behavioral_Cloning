@@ -12,11 +12,11 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/model_summary.png "Model Visualization"
-[image2]: ./examples/training_data_historgram.png "Data Visualization"
-[image3]: ./examples/center_2016_12_01_13_31_13_279.jpg "center Image"
-[image4]: ./examples/left_2017_02_11_17_23_18_497.jpg "Left Recovery Image"
-[image5]: ./examples/right_2017_02_11_14_55_30_805.jpg "Right Recovery Image"
+[image1]: ./model_summary.png "Model Visualization"
+[image2]: ./training_data_historgram.png "Data Visualization"
+[image3]: ./center_2016_12_01_13_31_13_279.jpg "center Image"
+[image4]: ./left_2017_02_11_17_23_18_497.jpg "Left Recovery Image"
+[image5]: ./right_2017_02_11_14_55_30_805.jpg "Right Recovery Image"
 
 
 ## Rubric Points
