@@ -83,7 +83,7 @@ K.set_image_dim_ordering('tf')
 # Loading the Pickled training data. I did not have a separate pickled validation data. I am creating validation data by
 # splitting the training data. Please see below.
 print('Reading Pickled Files')
-with open('driving_train.p', 'rb') as f:
+with open('driving_train_18k.p', 'rb') as f:
         train_data = pickle.load(f)
 X_train = train_data['features']
 y_train = train_data['labels']
@@ -102,7 +102,7 @@ print('Neural network initializing.')
 # Looked at various implementations, read online to see what's the best convolution architecute to use
 # It seems like have BatchNormalization to reduce internal covariate shift. I read online that it is a good idea to do this.
 batch_size = 100
-epochs = 10
+epochs = 5
 pool_size = (2, 2)
 input_shape = X_train.shape[1:]
 print(input_shape)
@@ -126,9 +126,9 @@ model.add(MaxPooling2D(pool_size=pool_size))
 # Dropout to avoid overfitting
 model.add(Dropout(0.2))
 
-### Conv Layer 3
-##model.add(Convolution2D(16, 3, 3, border_mode='valid', subsample=(1,1)))
-##model.add(Activation('relu'))
+# Conv Layer 3
+model.add(Convolution2D(16, 3, 3, border_mode='valid', subsample=(1,1)))
+model.add(Activation('relu'))
 ##
 ### Conv Layer 4
 ##model.add(Convolution2D(8, 3, 3, border_mode='valid', subsample=(1,1)))
