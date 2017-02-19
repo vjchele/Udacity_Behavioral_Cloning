@@ -88,7 +88,21 @@ with open('driving_train_18k.p', 'rb') as f:
 X_train = train_data['features']
 y_train = train_data['labels']
 
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.1, random_state=23)
+print('loaded initial train data')
+print(len(X_train))
+
+##print('Reading curved images Pickled Files')
+##with open('driving_train_bridge_correction_for_3conv.p', 'rb') as f:
+##        train_curve_data = pickle.load(f)
+##
+##X_train = np.concatenate((X_train,train_curve_data['features']))
+##y_train = np.concatenate((y_train,train_curve_data['labels']))
+##
+##print('loaded curve train data')
+##print(len(X_train))
+      
+
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=23)
 
 # Data Visualization
 plt.hist(y_train)
@@ -101,8 +115,8 @@ print('Neural network initializing.')
 
 # Looked at various implementations, read online to see what's the best convolution architecute to use
 # It seems like have BatchNormalization to reduce internal covariate shift. I read online that it is a good idea to do this.
-batch_size = 100
-epochs = 5
+batch_size = 110
+epochs = 3
 pool_size = (2, 2)
 input_shape = X_train.shape[1:]
 print(input_shape)
@@ -130,9 +144,9 @@ model.add(Dropout(0.2))
 model.add(Convolution2D(16, 3, 3, border_mode='valid', subsample=(1,1)))
 model.add(Activation('relu'))
 ##
-### Conv Layer 4
-##model.add(Convolution2D(8, 3, 3, border_mode='valid', subsample=(1,1)))
-##model.add(Activation('relu'))
+# Conv Layer 4
+model.add(Convolution2D(8, 3, 3, border_mode='valid', subsample=(1,1)))
+model.add(Activation('relu'))
 
 
 
